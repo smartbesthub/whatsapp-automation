@@ -7,6 +7,11 @@ const port = process.env.PORT || 3000;
 // Middleware to parse JSON request bodies
 app.use(express.json());
 
+// Root route to display a simple message when visiting the app homepage
+app.get('/', (req, res) => {
+    res.send('Welcome to WhatsApp Automation!');
+});
+
 // Endpoint to simulate an order placement and trigger WhatsApp message
 app.post('/place-order', async (req, res) => {
     const { phoneNumber, orderDetails } = req.body;
@@ -32,3 +37,4 @@ app.post('/place-order', async (req, res) => {
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
+
